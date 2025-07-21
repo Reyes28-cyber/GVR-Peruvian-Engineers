@@ -4,7 +4,11 @@ const GetUsers = (req, res) => {
 }
 
 const GetUserById = (req, res) => {
-    res.send(`Informacion de usuario ${req.params.id}`);
+    res.status(200).json({
+        data: { id: req.params.id, name: `Usuario ${req.params.id}`, email: `usuario${req.params.id}@ejemplo.com` },
+        error: null,
+        message: "Información de usuario obtenida exitosamente"
+    });
 }
 
 module.exports = {
