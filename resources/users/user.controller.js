@@ -1,4 +1,5 @@
 const GetUsers = (req, res) => {
+    console.log('Obteniendo información de usuarios');
     res.send('Informacion de usuarios');
 }
 
