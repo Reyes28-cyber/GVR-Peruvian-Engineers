@@ -1,4 +1,5 @@
 const express = require('express')
+const morgan = require('morgan')
 
 const usersRouter = require('./resources/users/user.router');
 const projectsRouter = require('./resources/projects/projects.router');
@@ -6,6 +7,13 @@ const messageMiddleware = require('./middlewares/message.middleware');
 
 const app = express();
 
+// Middleware
+app.use(morgan('dev'));
+
+// Routers
+app.get('/', (req, res) => {
+    res.send('GVR corriendo');
+});
 
 app.use("/users", messageMiddleware, usersRouter)
 app.use("/projects", messageMiddleware, projectsRouter)
