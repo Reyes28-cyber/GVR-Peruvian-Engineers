@@ -31,6 +31,6 @@ const GetAPSTwoToken = async () => {
     { headers }
   );
 
-return data;
+  return data;
 };
 module.exports = GetAPSTwoToken;
