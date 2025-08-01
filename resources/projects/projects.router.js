@@ -2,11 +2,13 @@ const express = require('express')
 const router = express.Router();
 
 
-const { GetProjects, GetProjectById, CreateProject, DeleteProject } = require('./projects.controller');
+const { GetProjects, CreateProject, DeleteProject, GetProject } = require('./projects.controller');
 
 // Endpoint to get all projects
 router.get ('/', GetProjects);
-router.get ('/:id', GetProjectById);
+
+// /projects/:projectId
+router.get ('/:projectId', GetProject);
 
 // Endpoint to delete a project
 router.delete ('/', DeleteProject);

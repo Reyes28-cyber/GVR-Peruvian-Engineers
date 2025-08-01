@@ -11,7 +11,7 @@ const GetApsToken = async(req, res) => {
 
   return res.status(HttpCodes.OK).json({
     data: {
-      token: data.access_token, // This is the actual Autodesk token
+      access_token: data.access_token, // This is the actual Autodesk token
     },
     error: false,
     message: "Autodesk Platform Services token retrieved successfully",

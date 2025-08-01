@@ -22,7 +22,7 @@ const GetAPSTwoToken = async () => {
 
   const requestData = {
     grant_type: "client_credentials",
-    scope: "data:read",
+    scope: "data:read bucket:read bucket:create",
   };
 
   const { data } = await axios.post(
@@ -31,6 +31,6 @@ const GetAPSTwoToken = async () => {
     { headers }
   );
 
-return data;
+  return data;
 };
 module.exports = GetAPSTwoToken;
