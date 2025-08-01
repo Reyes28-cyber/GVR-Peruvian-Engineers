@@ -1,11 +1,13 @@
 const HttpCodes = require("../../const/HttpCodes");
 
 const GetProjects = (req, res) => {
+
+  // Aquí podrías agregar la lógica para obtener los proyectos
+  // Por ahora, vamos a simular una respuesta con algunos proyectos de ejemplo
   res.status(HttpCodes.OK).json({
     data: [
-        { id: 1, name: "Proyecto 1", description: "Descripción del Proyecto 1", author: "Autor 1" },
-        { id: 2, name: "Proyecto 2", description: "Descripción del Proyecto 2", author: "Autor 2" },
-        { id: 3, name: "Proyecto 3", description: "Descripción del Proyecto 3", author: "Autor 3" }
+        { id: 1, name: "Proyecto Casma", description: "Descripción del Proyecto Casma", author: "Autor 1" },
+        { id: 2, name: "Proyecto Viru", description: "Descripción del Proyecto Viru", author: "Autor 2" }
     ],
     error: null,
     message: "Lista de proyectos obtenida exitosamente"
@@ -41,13 +43,27 @@ const DeleteProject = (req, res) => {
   res.send(`Eliminando proyectos`);
 };
 
-const GetProjectById = (req, res) => {
-  res.send(`Informacion de proyecto ${req.params.id}`);
+const GetProject = (req, res) => {
+  const { projectId } = req.params;
+
+  if (!projectId) {
+    return res.status(HttpCodes.BAD_REQUEST).json({
+      data: null,
+      error: true,
+      message: "El id del proyecto es obligatorio"
+    });
+  }
+
+  return res.status(HttpCodes.OK).json({
+    data: { id: projectId, name: `Proyecto ${projectId}`, description: "Proyecto con el id " + projectId, urn: "urn:project:" + projectId},
+    error: false,
+    message: "Proyecto encontrado"
+  })
 };
 
 module.exports = {
   GetProjects,
-  GetProjectById,
+  GetProject,
   CreateProject,
   DeleteProject,
 };
